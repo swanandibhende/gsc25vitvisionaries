@@ -1,0 +1,1 @@
+# gsc25vitvisionaries
