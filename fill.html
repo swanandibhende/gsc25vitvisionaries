@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill a Document - Legalize</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Legalize</h1>
+                <p>Your Legal Companion</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="active"><a href="fill-document.html"><i class="fas fa-file-pen"></i> Fill a Document</a></li>
+                    <li><a href="understand.html"><i class="fas fa-book-open"></i> Understand a Document</a></li>
+                    <li><a href="translate.html"><i class="fas fa-language"></i> Translate</a></li>
+                    <li><a href="download.html"><i class="fas fa-download"></i> Download</a></li>
+                    <li><a href="login.html" class="auth-link"><i class="fas fa-user"></i> Login</a></li>
+                    <li><a href="signup.html" class="auth-link"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="document-fill">
+        <div class="container">
+            <h2 class="section-title">Fill a Legal Document</h2>
+            <div class="document-process">
+                <div class="process-steps">
+                    <div class="step active" data-step="1">
+                        <span>1</span>
+                        <p>Select Document</p>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span>2</span>
+                        <p>Provide Information</p>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span>3</span>
+                        <p>Review & Download</p>
+                    </div>
+                </div>
+                
+                <div class="process-content">
+                    <div class="step-content active" data-step="1">
+                        <h3>Select the Document Type</h3>
+                        <div class="document-types">
+                            <div class="document-card">
+                                <i class="fas fa-file-contract"></i>
+                                <h4>Contract Agreement</h4>
+                                <p>Business, employment, or service contracts</p>
+                                <button class="btn primary select-doc" data-doc="contract">Select</button>
+                            </div>
+                            <div class="document-card">
+                                <i class="fas fa-house"></i>
+                                <h4>Lease Agreement</h4>
+                                <p>Rental and property lease documents</p>
+                                <button class="btn primary select-doc" data-doc="lease">Select</button>
+                            </div>
+                            <div class="document-card">
+                                <i class="fas fa-handshake"></i>
+                                <h4>NDA</h4>
+                                <p>Non-disclosure agreements</p>
+                                <button class="btn primary select-doc" data-doc="nda">Select</button>
+                            </div>
+                            <div class="document-card">
+                                <i class="fas fa-gavel"></i>
+                                <h4>Power of Attorney</h4>
+                                <p>Legal authorization documents</p>
+                                <button class="btn primary select-doc" data-doc="poa">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content" data-step="2">
+                        <h3>Provide Required Information</h3>
+                        <form id="document-form">
+                            <div class="form-group">
+                                <label for="party1-name">Your Full Name</label>
+                                <input type="text" id="party1-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="party2-name">Other Party's Full Name</label>
+                                <input type="text" id="party2-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="effective-date">Effective Date</label>
+                                <input type="date" id="effective-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agreement-terms">Key Terms</label>
+                                <textarea id="agreement-terms" rows="4" placeholder="Describe the main terms of your agreement"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn secondary prev-step">Back</button>
+                                <button type="button" class="btn primary next-step">Continue</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="step-content" data-step="3">
+                        <h3>Review Your Document</h3>
+                        <div class="document-preview">
+                            <div class="preview-header">
+                                <h4 id="preview-title">Contract Agreement</h4>
+                                <p>Generated on <span id="preview-date"></span></p>
+                            </div>
+                            <div class="preview-content" id="document-content">
+                            </div>
+                        </div>
+                        <div class="preview-actions">
+                            <button type="button" class="btn secondary prev-step">Back</button>
+                            <button type="button" class="btn primary download-doc"><i class="fas fa-download"></i> Download Document</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About Legalize</h3>
+                    <p>Providing accessible legal tools and resources to empower individuals and businesses in managing their legal affairs.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="fill-document.html">Fill a Document</a></li>
+                        <li><a href="understand.html">Understand a Document</a></li>
+                        <li><a href="translate.html">Translate</a></li>
+                        <li><a href="download.html">Download</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Legalize. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

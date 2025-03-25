@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Legal Documents - Legalize</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Legalize</h1>
+                <p>Your Legal Companion</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="fill-document.html"><i class="fas fa-file-pen"></i> Fill a Document</a></li>
+                    <li><a href="understand.html"><i class="fas fa-book-open"></i> Understand a Document</a></li>
+                    <li><a href="translate.html"><i class="fas fa-language"></i> Translate</a></li>
+                    <li class="active"><a href="download.html"><i class="fas fa-download"></i> Download</a></li>
+                    <li><a href="login.html" class="auth-link"><i class="fas fa-user"></i> Login</a></li>
+                    <li><a href="signup.html" class="auth-link"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="document-download">
+        <div class="container">
+            <h2 class="section-title">Download Legal Document Templates</h2>
+            
+            <div class="search-filter">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search documents..." id="doc-search">
+                    <button class="btn icon"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-options">
+                    <select id="doc-category">
+                        <option value="all">All Categories</option>
+                        <option value="business">Business</option>
+                        <option value="personal">Personal</option>
+                        <option value="real-estate">Real Estate</option>
+                        <option value="employment">Employment</option>
+                        <option value="intellectual">Intellectual Property</option>
+                    </select>
+                    <select id="doc-type">
+                        <option value="all">All Types</option>
+                        <option value="contract">Contracts</option>
+                        <option value="agreement">Agreements</option>
+                        <option value="notice">Notices</option>
+                        <option value="form">Forms</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="document-grid">
+                <div class="document-card" data-category="business" data-type="contract">
+                    <div class="doc-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Non-Disclosure Agreement</h3>
+                    <p>Standard NDA for protecting confidential business information</p>
+                    <div class="doc-meta">
+                        <span><i class="fas fa-file-word"></i> DOCX</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                    <button class="btn primary download-btn">Download</button>
+                </div>
+                
+                <div class="document-card" data-category="personal" data-type="agreement">
+                    <div class="doc-icon">
+                        <i class="fas fa-house"></i>
+                    </div>
+                    <h3>Residential Lease Agreement</h3>
+                    <p>Standard rental agreement for residential properties</p>
+                    <div class="doc-meta">
+                        <span><i class="fas fa-file-word"></i> DOCX</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                    <button class="btn primary download-btn">Download</button>
+                </div>
+                
+                <div class="document-card" data-category="employment" data-type="contract">
+                    <div class="doc-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Employment Contract</h3>
+                    <p>Standard agreement between employer and employee</p>
+                    <div class="doc-meta">
+                        <span><i class="fas fa-file-word"></i> DOCX</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                    <button class="btn primary download-btn">Download</button>
+                </div>
+                
+                <div class="document-card" data-category="business" data-type="agreement">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>Service Agreement</h3>
+                    <p>Contract for service providers and clients</p>
+                    <div class="doc-meta">
+                        <span><i class="fas fa-file-word"></i> DOCX</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                    <button class="btn primary download-btn">Download</button>
+                </div>
+                
+                <div class="document-card" data-category="personal" data-type="form">
+                    <div class="doc-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Power of Attorney</h3>
+                    <p>Legal authorization to act on someone's behalf</p>
+                    <div class="doc-meta">
+                        <span><i class="fas fa-file-word"></i> DOCX</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                    <button class="btn primary download-btn">Download</button>
+                </div>
+                
+                <div class="document-card" data-category="real-estate" data-type="contract">
+                    <div class="doc-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Purchase Agreement</h3>
+                    <p>Standard contract for property purchase</p>
+                    <div class="doc-meta">
+                        <span><i class="fas fa-file-word"></i> DOCX</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                    <button class="btn primary download-btn">Download</button>
+                </div>
+            </div>
+            
+            <div class="premium-section">
+                <h3>Premium Legal Documents</h3>
+                <p>Access our full library of professionally drafted legal templates with a premium account.</p>
+                <div class="premium-cards">
+                    <div class="premium-card">
+                        <h4>Business Legal Pack</h4>
+                        <ul>
+                            <li>25+ business contracts</li>
+                            <li>Employment documents</li>
+                            <li>Compliance forms</li>
+                            <li>Intellectual property</li>
+                        </ul>
+                        <button class="btn primary">Get Premium</button>
+                    </div>
+                    <div class="premium-card">
+                        <h4>Personal Legal Pack</h4>
+                        <ul>
+                            <li>Will & testament</li>
+                            <li>Power of attorney</li>
+                            <li>Rental agreements</li>
+                            <li>Family law documents</li>
+                        </ul>
+                        <button class="btn primary">Get Premium</button>
+                    </div>
+                    <div class="premium-card">
+                        <h4>Complete Legal Pack</h4>
+                        <ul>
+                            <li>All business documents</li>
+                            <li>All personal documents</li>
+                            <li>Regular updates</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <button class="btn primary">Get Premium</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About Legalize</h3>
+                    <p>Providing accessible legal tools and resources to empower individuals and businesses in managing their legal affairs.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="fill-document.html">Fill a Document</a></li>
+                        <li><a href="understand.html">Understand a Document</a></li>
+                        <li><a href="translate.html">Translate</a></li>
+                        <li><a href="download.html">Download</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Legalize. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

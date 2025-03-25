@@ -1,0 +1,418 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav');
+    
+    if (mobileMenuBtn && nav) {
+        mobileMenuBtn.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+    }
+
+    // Document fill process steps
+    const steps = document.querySelectorAll('.process-steps .step');
+    const stepContents = document.querySelectorAll('.process-content .step-content');
+    
+    if (steps.length && stepContents.length) {
+        steps.forEach(step => {
+            step.addEventListener('click', function() {
+                const stepNumber = this.getAttribute('data-step');
+                
+                // Update active step
+                steps.forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding content
+                stepContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.getAttribute('data-step') === stepNumber) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    }
+
+    // Document type selection
+    const docTypeButtons = document.querySelectorAll('.select-doc');
+    
+    if (docTypeButtons.length) {
+        docTypeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const docType = this.getAttribute('data-doc');
+                // In a real app, you would load the appropriate form based on docType
+                document.querySelector('[data-step="2"]').click();
+            });
+        });
+    }
+
+    // Next/previous step buttons
+    const nextButtons = document.querySelectorAll('.next-step');
+    const prevButtons = document.querySelectorAll('.prev-step');
+    
+    if (nextButtons.length) {
+        nextButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const currentStep = this.closest('.step-content').getAttribute('data-step');
+                const nextStep = parseInt(currentStep) + 1;
+                
+                if (nextStep <= steps.length) {
+                    document.querySelector(`[data-step="${nextStep}"]`).click();
+                    
+                    // In a real app, you would generate the document preview here
+                    if (nextStep === 3) {
+                        generateDocumentPreview();
+                    }
+                }
+            });
+        });
+    }
+    
+    if (prevButtons.length) {
+        prevButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const currentStep = this.closest('.step-content').getAttribute('data-step');
+                const prevStep = parseInt(currentStep) - 1;
+                
+                if (prevStep >= 1) {
+                    document.querySelector(`[data-step="${prevStep}"]`).click();
+                }
+            });
+        });
+    }
+
+    // Document upload
+    const uploadBox = document.getElementById('upload-box');
+    const fileUpload = document.getElementById('document-upload');
+    const fileInfo = document.getElementById('file-info');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    
+    if (uploadBox && fileUpload && fileInfo) {
+        uploadBox.addEventListener('click', function() {
+            fileUpload.click();
+        });
+        
+        fileUpload.addEventListener('change', function() {
+            if (this.files.length) {
+                const fileName = this.files[0].name;
+                fileInfo.textContent = fileName;
+                analyzeBtn.disabled = false;
+            } else {
+                fileInfo.textContent = 'No file selected';
+                analyzeBtn.disabled = true;
+            }
+        });
+        
+        uploadBox.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--primary-color)';
+            this.style.backgroundColor = 'rgba(139, 0, 0, 0.05)';
+        });
+        
+        uploadBox.addEventListener('dragleave', function() {
+            this.style.borderColor = '#E0E0E0';
+            this.style.backgroundColor = 'transparent';
+        });
+        
+        uploadBox.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#E0E0E0';
+            this.style.backgroundColor = 'transparent';
+            
+            if (e.dataTransfer.files.length) {
+                fileUpload.files = e.dataTransfer.files;
+                const fileName = e.dataTransfer.files[0].name;
+                fileInfo.textContent = fileName;
+                analyzeBtn.disabled = false;
+            }
+        });
+    }
+
+    // Document analysis tabs
+    const analysisTabs = document.querySelectorAll('.results-tabs .tab');
+    const analysisContents = document.querySelectorAll('.analysis-results .tab-content');
+    
+    if (analysisTabs.length && analysisContents.length) {
+        analysisTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                analysisTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                analysisContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.getAttribute('data-tab') === tabName) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    }
+
+    // Translation page functionality
+    const translateUploadBox = document.getElementById('translate-upload-box');
+    const translateFileUpload = document.getElementById('translate-upload');
+    const translateFileInfo = document.getElementById('translate-file-info');
+    const translateBtn = document.getElementById('translate-btn');
+    const swapBtn = document.getElementById('swap-languages');
+    const copyBtn = document.getElementById('copy-translation');
+    const downloadBtn = document.getElementById('download-translation');
+    const sourceText = document.getElementById('source-text');
+    const targetText = document.getElementById('target-text');
+    const sourceLang = document.getElementById('source-language');
+    const targetLang = document.getElementById('target-language');
+    
+    if (translateUploadBox && translateFileUpload && translateFileInfo) {
+        translateUploadBox.addEventListener('click', function() {
+            translateFileUpload.click();
+        });
+        
+        translateFileUpload.addEventListener('change', function() {
+            if (this.files.length) {
+                const fileName = this.files[0].name;
+                translateFileInfo.textContent = fileName;
+                
+                // In a real app, you would read the file content here
+                // For demo, we'll just show a placeholder
+                sourceText.value = "This is a placeholder for the uploaded document content. In a real application, this would show the actual text from the uploaded file.";
+            } else {
+                translateFileInfo.textContent = 'No file selected';
+            }
+        });
+    }
+    
+    if (translateBtn) {
+        translateBtn.addEventListener('click', function() {
+            if (sourceText.value.trim()) {
+                // In a real app, you would call a translation API here
+                // For demo, we'll just show a placeholder translation
+                targetText.value = "This is a placeholder for the translated text. In a real application, this would show the actual translation from the source language to the target language.";
+            } else {
+                alert('Please enter text to translate or upload a document');
+            }
+        });
+    }
+    
+    if (swapBtn) {
+        swapBtn.addEventListener('click', function() {
+            const tempLang = sourceLang.value;
+            sourceLang.value = targetLang.value;
+            targetLang.value = tempLang;
+            
+            const tempText = sourceText.value;
+            sourceText.value = targetText.value;
+            targetText.value = tempText;
+        });
+    }
+    
+    if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+            if (targetText.value.trim()) {
+                targetText.select();
+                document.execCommand('copy');
+                alert('Translation copied to clipboard');
+            }
+        });
+    }
+    
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function() {
+            if (targetText.value.trim()) {
+                alert('In a real application, this would download the translated text as a file');
+            }
+        });
+    }
+
+    // Document download filtering
+    const docSearch = document.getElementById('doc-search');
+    const docCategory = document.getElementById('doc-category');
+    const docType = document.getElementById('doc-type');
+    const documentCards = document.querySelectorAll('.document-card');
+    
+    if (docSearch && documentCards.length) {
+        docSearch.addEventListener('input', filterDocuments);
+    }
+    
+    if (docCategory) {
+        docCategory.addEventListener('change', filterDocuments);
+    }
+    
+    if (docType) {
+        docType.addEventListener('change', filterDocuments);
+    }
+    
+    function filterDocuments() {
+        const searchTerm = docSearch.value.toLowerCase();
+        const category = docCategory.value;
+        const type = docType.value;
+        
+        documentCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const desc = card.querySelector('p').textContent.toLowerCase();
+            const cardCategory = card.getAttribute('data-category');
+            const cardType = card.getAttribute('data-type');
+            
+            const matchesSearch = title.includes(searchTerm) || desc.includes(searchTerm);
+            const matchesCategory = category === 'all' || cardCategory === category;
+            const matchesType = type === 'all' || cardType === type;
+            
+            if (matchesSearch && matchesCategory && matchesType) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Profile page tabs
+    const profileTabs = document.querySelectorAll('.profile-tabs .tab');
+    const profileContents = document.querySelectorAll('.profile-section .tab-content');
+    
+    if (profileTabs.length && profileContents.length) {
+        profileTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                profileTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                profileContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.getAttribute('data-tab') === tabName) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    }
+
+    // Password strength indicator
+    const passwordInput = document.getElementById('password');
+    const passwordStrength = document.getElementById('password-strength');
+    
+    if (passwordInput && passwordStrength) {
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            const strengthBars = passwordStrength.querySelectorAll('.strength-bar');
+            const strengthText = passwordStrength.querySelector('.strength-text');
+            
+            // Reset
+            strengthBars.forEach(bar => {
+                bar.style.backgroundColor = '#E0E0E0';
+            });
+            
+            // Very simple strength check for demo
+            if (password.length === 0) {
+                strengthText.textContent = 'Password Strength';
+            } else if (password.length < 6) {
+                strengthBars[0].style.backgroundColor = 'var(--error-color)';
+                strengthText.textContent = 'Weak';
+                strengthText.style.color = 'var(--error-color)';
+            } else if (password.length < 10) {
+                strengthBars[0].style.backgroundColor = 'var(--warning-color)';
+                strengthBars[1].style.backgroundColor = 'var(--warning-color)';
+                strengthText.textContent = 'Medium';
+                strengthText.style.color = 'var(--warning-color)';
+            } else {
+                strengthBars[0].style.backgroundColor = 'var(--success-color)';
+                strengthBars[1].style.backgroundColor = 'var(--success-color)';
+                strengthBars[2].style.backgroundColor = 'var(--success-color)';
+                strengthText.textContent = 'Strong';
+                strengthText.style.color = 'var(--success-color)';
+            }
+        });
+    }
+
+    // Form submissions
+    const signupForm = document.getElementById('signup-form');
+    const loginForm = document.getElementById('login-form');
+    const profileForm = document.getElementById('profile-form');
+    
+    if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would validate and submit the form
+            alert('Sign up form submitted. In a real application, this would create an account.');
+            window.location.href = 'profile.html';
+        });
+    }
+    
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would validate and submit the form
+            alert('Login form submitted. In a real application, this would log you in.');
+            window.location.href = 'profile.html';
+        });
+    }
+    
+    if (profileForm) {
+        profileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would validate and submit the form
+            alert('Profile updated successfully');
+        });
+    }
+
+    // Logout button
+    const logoutBtn = document.getElementById('logout-btn');
+    
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // In a real app, you would clear the session
+            alert('You have been logged out');
+            window.location.href = 'index.html';
+        });
+    }
+
+    // Helper function to generate document preview
+    function generateDocumentPreview() {
+        const docTitle = document.getElementById('preview-title');
+        const docDate = document.getElementById('preview-date');
+        const docContent = document.getElementById('document-content');
+        
+        // Set current date
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        docDate.textContent = formattedDate;
+        
+        // Generate document content based on form inputs
+        const party1Name = document.getElementById('party1-name').value || '[Your Name]';
+        const party2Name = document.getElementById('party2-name').value || '[Other Party Name]';
+        const effectiveDate = document.getElementById('effective-date').value || '[Effective Date]';
+        const agreementTerms = document.getElementById('agreement-terms').value || '[Agreement Terms]';
+        
+        docContent.innerHTML = `
+            <h4>AGREEMENT</h4>
+            <p>This Agreement is made and entered into as of ${effectiveDate} by and between:</p>
+            <p><strong>${party1Name}</strong> ("Party A"), and</p>
+            <p><strong>${party2Name}</strong> ("Party B").</p>
+            <br>
+            <h4>1. TERMS OF AGREEMENT</h4>
+            <p>${agreementTerms}</p>
+            <br>
+            <h4>2. GENERAL PROVISIONS</h4>
+            <p>This Agreement constitutes the entire understanding between the parties and supersedes all prior agreements.</p>
+            <p>This Agreement shall be governed by and construed in accordance with the laws of the applicable jurisdiction.</p>
+            <br>
+            <div style="display: flex; justify-content: space-between; margin-top: 50px;">
+                <div>
+                    <p>_________________________</p>
+                    <p>${party1Name}</p>
+                    <p>Date: _______________</p>
+                </div>
+                <div>
+                    <p>_________________________</p>
+                    <p>${party2Name}</p>
+                    <p>Date: _______________</p>
+                </div>
+            </div>
+        `;
+    }
+});

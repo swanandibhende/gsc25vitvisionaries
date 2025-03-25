@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Legalize</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Legalize</h1>
+                <p>Your Legal Companion</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="fill-document.html"><i class="fas fa-file-pen"></i> Fill a Document</a></li>
+                    <li><a href="understand.html"><i class="fas fa-book-open"></i> Understand a Document</a></li>
+                    <li><a href="translate.html"><i class="fas fa-language"></i> Translate</a></li>
+                    <li><a href="download.html"><i class="fas fa-download"></i> Download</a></li>
+                    <li class="active"><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="images/default-avatar.png" alt="User avatar" id="user-avatar">
+                    <button class="btn icon" id="change-avatar"><i class="fas fa-camera"></i></button>
+                </div>
+                <div class="profile-info">
+                    <h2 id="user-name">John Doe</h2>
+                    <p id="user-email">john.doe@example.com</p>
+                    <div class="profile-status">
+                        <span class="status-badge basic">Basic Account</span>
+                        <button class="btn small" id="upgrade-btn">Upgrade to Premium</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-tabs">
+                <div class="tab active" data-tab="documents">My Documents</div>
+                <div class="tab" data-tab="settings">Account Settings</div>
+                <div class="tab" data-tab="billing">Billing</div>
+                <div class="tab" data-tab="help">Help</div>
+            </div>
+            
+            <div class="tab-content active" data-tab="documents">
+                <div class="documents-actions">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search documents..." id="profile-doc-search">
+                        <button class="btn icon"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="filter-options">
+                        <select id="profile-doc-filter">
+                            <option value="all">All Documents</option>
+                            <option value="filled">Filled Documents</option>
+                            <option value="downloaded">Downloaded Templates</option>
+                            <option value="translated">Translations</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="documents-list">
+                    <div class="document-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="doc-info">
+                            <h4>Employment Contract</h4>
+                            <p>Created: <span class="doc-date">15 Oct 2023</span></p>
+                            <p class="doc-desc">Contract with ABC Corp for software development services</p>
+                        </div>
+                        <div class="doc-actions">
+                            <button class="btn icon"><i class="fas fa-eye"></i></button>
+                            <button class="btn icon"><i class="fas fa-download"></i></button>
+                            <button class="btn icon"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="document-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <div class="doc-info">
+                            <h4>Lease Agreement</h4>
+                            <p>Created: <span class="doc-date">05 Sep 2023</span></p>
+                            <p class="doc-desc">Apartment rental agreement for 123 Main St</p>
+                        </div>
+                        <div class="doc-actions">
+                            <button class="btn icon"><i class="fas fa-eye"></i></button>
+                            <button class="btn icon"><i class="fas fa-download"></i></button>
+                            <button class="btn icon"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="document-item">
+                        <div class="doc-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="doc-info">
+                            <h4>Contract Translation (ES-EN)</h4>
+                            <p>Created: <span class="doc-date">22 Aug 2023</span></p>
+                            <p class="doc-desc">Spanish to English translation of service contract</p>
+                        </div>
+                        <div class="doc-actions">
+                            <button class="btn icon"><i class="fas fa-eye"></i></button>
+                            <button class="btn icon"><i class="fas fa-download"></i></button>
+                            <button class="btn icon"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="storage-info">
+                    <h4>Document Storage</h4>
+                    <div class="storage-bar">
+                        <div class="storage-used" style="width: 35%;"></div>
+                    </div>
+                    <p>3.5 MB of 10 MB used</p>
+                </div>
+            </div>
+            
+            <div class="tab-content" data-tab="settings">
+                <h3>Account Settings</h3>
+                <form id="profile-form">
+                    <div class="form-group">
+                        <label for="profile-name">Full Name</label>
+                        <input type="text" id="profile-name" value="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email">Email Address</label>
+                        <input type="email" id="profile-email" value="john.doe@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-phone">Phone Number</label>
+                        <input type="tel" id="profile-phone" value="+1 (555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-address">Address</label>
+                        <textarea id="profile-address" rows="3">123 Main Street, Apt 4B
+New York, NY 10001
+United States</textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary">Save Changes</button>
+                    </div>
+                </form>
+                
+                <div class="security-settings">
+                    <h4>Security</h4>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h5>Password</h5>
+                            <p>Last changed 3 months ago</p>
+                        </div>
+                        <button class="btn secondary" id="change-password-btn">Change Password</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h5>Two-Factor Authentication</h5>
+                            <p>Add an extra layer of security to your account</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="two-factor-toggle">
+                            <label for="two-factor-toggle"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" data-tab="billing">
+                <h3>Billing Information</h3>
+                <div class="billing-plan">
+                    <h4>Current Plan: <span>Basic</span></h4>
+                    <p>Your current plan includes access to standard document templates and basic features.</p>
+                    <button class="btn primary" id="upgrade-plan-btn">Upgrade to Premium</button>
+                </div>
+                
+                <div class="payment-methods">
+                    <h4>Payment Methods</h4>
+                    <div class="payment-card">
+                        <div class="card-info">
+                            <i class="fab fa-cc-visa"></i>
+                            <span>Visa ending in 4242</span>
+                            <span>Expires 05/2025</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn icon"><i class="fas fa-edit"></i></button>
+                            <button class="btn icon"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <button class="btn secondary" id="add-payment-btn"><i class="fas fa-plus"></i> Add Payment Method</button>
+                </div>
+                
+                <div class="billing-history">
+                    <h4>Billing History</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>15 Oct 2023</td>
+                                <td>Premium Plan Subscription</td>
+                                <td>$9.99</td>
+                                <td><span class="status paid">Paid</span></td>
+                                <td><a href="#">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>15 Sep 2023</td>
+                                <td>Premium Plan Subscription</td>
+                                <td>$9.99</td>
+                                <td><span class="status paid">Paid</span></td>
+                                <td><a href="#">Download</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="tab-content" data-tab="help">
+                <h3>Help & Support</h3>
+                <div class="help-cards">
+                    <div class="help-card">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>FAQs</h4>
+                        <p>Find answers to common questions about using LegalEase</p>
+                        <button class="btn secondary">Browse FAQs</button>
+                    </div>
+                    <div class="help-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Contact Support</h4>
+                        <p>Send us a message and we'll get back to you as soon as possible</p>
+                        <button class="btn secondary">Contact Us</button>
+                    </div>
+                    <div class="help-card">
+                        <i class="fas fa-book"></i>
+                        <h4>Guides</h4>
+                        <p>Learn how to make the most of LegalEase with our guides</p>
+                        <button class="btn secondary">View Guides</button>
+                    </div>
+                </div>
+                
+                <div class="legal-help">
+                    <h4>Legal Assistance</h4>
+                    <p>While LegalEase provides document tools, we are not a law firm and cannot provide legal advice. For complex legal matters, we recommend consulting with a qualified attorney.</p>
+                    <button class="btn primary" id="find-lawyer-btn">Find a Lawyer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About Legalize</h3>
+                    <p>Providing accessible legal tools and resources to empower individuals and businesses in managing their legal affairs.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="fill-document.html">Fill a Document</a></li>
+                        <li><a href="understand.html">Understand a Document</a></li>
+                        <li><a href="translate.html">Translate</a></li>
+                        <li><a href="download.html">Download</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Legalize. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
